@@ -10,9 +10,8 @@ $(() => {
   });
 });
 
-
-$.get('http://0.0.0.0:5001/api/v1/status/', function (stuff, status) {
-  console.log(stuff);
+$.get('http://0.0.0.0:5001/api/v1/status/', function (data, status) {
+  console.log(data);
   if (data.status === 'OK') {
     $('div#api_status').addClass('available');
   } else {

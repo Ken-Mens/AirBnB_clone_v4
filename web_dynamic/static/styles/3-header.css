@@ -13,21 +13,8 @@ header {
 	border-bottom: 1px solid #CCCCCC;
 }
 
-/** DIV ELEMENT IN HEADER TAG ATTRIBUTES
- */
-{
-        background-color: #cccccc;
-	border-radius: 50%;
-	width: 40px;
-	height: 40px;
-	right: 30px;
-	position: absolute;
-	margin-top: 15px;
-}
-
 /** BACKGROUND COLOR
  */
-{
-        background-color: #ff545f;
+.available {
+        background-color: #ff545f !important;
 }
-
