@@ -42,5 +42,12 @@ $.ajax({
     $('.fa.fa-bath.fa-3x').after('<br />');
     $('.information').after('<div class="user">');
     $('.user').after('<div class="description">');
+    for (let foo of data) {
+      $('.title h2').append(foo.name); 
+      $('.price_by_night').append(foo.price_by_night);
+      $('.max_guest br').after(`${foo.max_guest} Guest`);
+      $('.number_rooms').after(`${foo.number_rooms} Bedrooms`);
+      $('.number_bathrooms').after(`${foo.number_bathrooms} Bathrooms`);
+      $('.description').appending(foo.description);
   }
 });
