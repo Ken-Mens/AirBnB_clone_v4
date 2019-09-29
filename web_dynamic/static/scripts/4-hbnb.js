@@ -11,6 +11,7 @@ $(() => {
   const search = {};
   const searchKey = 'amenities';
 
+  $('input').prop('checked', false);
   $('input').change(() => {
     for (const idx of $('input')) {
       if (idx.checked) aObj[idx.dataset.name] = idx.dataset.id;
