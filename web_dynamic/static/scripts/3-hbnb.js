@@ -10,7 +10,7 @@ $(() => {
   });
 });
 
-$.get('http://0.0.0.0:5001/api/v1/places_search/', function (data, status) {
+$.get('http://0.0.0.0:5001/api/v1/status/', function (data, status) {
   console.log(data);
   if (data.status === 'OK') {
     $('div#api_status').addClass('available');
@@ -27,27 +27,62 @@ $.ajax({
   contentType: 'application/json',
   data: JSON.stringify(dObj),
   success: function (data) {
-    $('.places h1').after('<article>');
-    $('article').append('<div class="title">');
-    $('.title').append('<h2>').append('<div class="price_by_night">');
-    $('.title').after('<div class="information">');
-    $('.information').append('<div class="max_guest">');
-    $('.max_guest').append('<i class="fa fa-users fa-3x" aria-hidden="true">'); // Has before
-    $('.fa.fa-users.fa-3x').after('<br />');
-    $('.max_guest').after('<div class="number_rooms">'); // Has before
-    $('.number_rooms').append('<i class="fa fa-bed fa-3x" aria-hidden="true">'); // Has before
-    $('.fa.fa-bed.fa-3x').after('<br />');
-    $('.number_rooms').after('<div class="number_bathrooms">');
-    $('.number_bathrooms').append('<i class="fa fa-bath fa-3x" aria-hidden="true">'); // Has before
-    $('.fa.fa-bath.fa-3x').after('<br />');
-    $('.information').after('<div class="user">');
-    $('.user').after('<div class="description">');
-    for (let foo of data) {
-      $('.title h2').append(foo.name); 
-      $('.price_by_night').append(foo.price_by_night);
-      $('.max_guest br').after(`${foo.max_guest} Guest`);
-      $('.number_rooms').after(`${foo.number_rooms} Bedrooms`);
-      $('.number_bathrooms').after(`${foo.number_bathrooms} Bathrooms`);
-      $('.description').appending(foo.description);
+    let foo = '';
+
+    for (const place of data) {
+      foo += `<article>
+
+      <div class="title">
+
+        <h2>${place.name}</h2>
+
+        <div class="price_by_night">
+
+    ${place.price_by_night}
+
+        </div>
+      </div>
+      <div class="information">
+        <div class="max_guest">
+    <i class="fa fa-users fa-3x" aria-hidden="true"></i>
+
+    <br />
+
+    ${place.max_guest} Guests
+
+        </div>
+        <div class="number_rooms">
+    <i class="fa fa-bed fa-3x" aria-hidden="true"></i>
+
+    <br />
+
+    ${place.number_rooms} Bedrooms
+        </div>
+        <div class="number_bathrooms">
+    <i class="fa fa-bath fa-3x" aria-hidden="true"></i>
+
+    <br />
+
+    ${place.number_bathrooms} Bathroom
+
+        </div>
+      </div>
+
+      <!-- **********************
+     USER
+     **********************  -->
+
+      <div class="user">
+
+      </div>
+      <div class="description">
+
+        ${place.description}
+
+      </div>
+
+    </article>`;
+    }
+    $('.places h1').after(foo);
   }
 });
