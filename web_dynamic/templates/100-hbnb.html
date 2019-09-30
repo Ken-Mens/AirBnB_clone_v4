@@ -66,7 +66,7 @@
 	    <ul class="popover">
 	      {% for state in states|dictsort %}
 	      <H2>{{ state[0] }}
-                <INPUT type="checkbox" style="margin-right:10px; float:left" data-id='{{ state.id }}' data-name='{{ state.name }}'/>
+                <INPUT type="checkbox" style="margin-right:10px; float:left" data-id='{{ state[1].id }}' data-name='{{ state[1].name }}'/>
 	      </H2>
 	      <UL>
 		{% for city in state[1].cities|sort(attribute='name') %}

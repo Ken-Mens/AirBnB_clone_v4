@@ -8,8 +8,12 @@ $.get('http://0.0.0.0:5001/api/v1/status/', function (data, status) {
 
 $(() => {
   const aObj = {};
+  const sObj = {};
+  const cObj = {};
   const search = {};
-  const searchKey = 'amenities';
+  const aKey = 'amenities';
+  const sKey = 'states';
+  const cKey = 'cities';
 
   $('input').prop('checked', false);
   $('.amenities input').change(() => {
@@ -18,7 +22,25 @@ $(() => {
       else delete aObj[idx.dataset.name];
     }
     $('.amenities h4').html(Object.keys(aObj).join(', '));
-    search[searchKey] = Object.values(aObj);
+    search[aKey] = Object.values(aObj);
+  });
+
+  $('.locations h2 input').change(() => {
+    for (const idx of $('.locations h2 input')) {
+      if (idx.checked) sObj[idx.dataset.name] = idx.dataset.id;
+      else delete sObj[idx.dataset.name];
+    }
+    $('.locations h4').html(Object.keys(sObj).join(', '));
+    search[sKey] = Object.values(sObj);
+  });
+
+  $('.locations li input').change(() => {
+    for (const idx of $('.locations li input')) {
+      if (idx.checked) cObj[idx.dataset.name] = idx.dataset.id;
+      else delete cObj[idx.dataset.name];
+    }
+    $('.locations h4').html(Object.keys(cObj).join(', '));
+    search[cKey] = Object.values(cObj);
   });
 
   $('button').click(() => {
