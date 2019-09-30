@@ -4,7 +4,7 @@
 
 Implements dynamic filters for AirBnB clone using jQuery. Changes on `input` checkbox tag will trigger storing or removing ID's which are they used to filter results pulled from the API. The status of the API is shown in the top right; red for up, grey for down.
 
-Example:
+Examples:
 
 ![img0](http://i.imgur.com/fHYVvpQ.png)
 
